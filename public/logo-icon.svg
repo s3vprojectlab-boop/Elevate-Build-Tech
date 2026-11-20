@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Dark background container with rounded edges -->
+  <rect width="64" height="64" rx="12" fill="#0e0f12"/>
+  
+  <g transform="translate(4, 4)">
+    <!-- Curving foundation ground line in signature terracotta -->
+    <path d="M4 50 Q 28 47 52 50" stroke="#c4683a" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Left volume (lowest) -->
+    <rect x="8" y="30" width="16" height="19" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <line x1="13" y1="30" x2="13" y2="49" stroke="#ffffff" stroke-width="1" stroke-opacity="0.5"/>
+
+    <!-- Middle volume (intermediate) -->
+    <rect x="20" y="18" width="18" height="31" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <line x1="25" y1="18" x2="25" y2="49" stroke="#ffffff" stroke-width="1" stroke-opacity="0.5"/>
+
+    <!-- Right volume (tallest, rising) -->
+    <rect x="34" y="6" width="17" height="43" stroke="#ffffff" stroke-width="2.2" fill="none"/>
+    <line x1="39" y1="6" x2="39" y2="49" stroke="#ffffff" stroke-width="1" stroke-opacity="0.6"/>
+  </g>
+</svg>

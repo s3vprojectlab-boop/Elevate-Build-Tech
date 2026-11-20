@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" fill="none">
+  <!-- Architectural 3-Stepped Rising Structure Mark -->
+  <g id="logo-icon" transform="translate(4, 4)">
+    <!-- Curving foundation ground line in signature terracotta -->
+    <path d="M2 54 Q 30 50 56 53" stroke="#c4683a" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Left volume (lowest) -->
+    <rect x="6" y="32" width="20" height="21" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <line x1="12" y1="32" x2="12" y2="53" stroke="#ffffff" stroke-width="1" stroke-opacity="0.5"/>
+
+    <!-- Middle volume (intermediate) -->
+    <rect x="20" y="18" width="22" height="35" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <line x1="26" y1="18" x2="26" y2="53" stroke="#ffffff" stroke-width="1" stroke-opacity="0.5"/>
+
+    <!-- Right volume (tallest, rising) -->
+    <rect x="36" y="6" width="20" height="47" stroke="#ffffff" stroke-width="2.2" fill="none"/>
+    <line x1="42" y1="6" x2="42" y2="53" stroke="#ffffff" stroke-width="1" stroke-opacity="0.6"/>
+  </g>
+
+  <!-- Typography: ELEVATE -->
+  <g id="wordmark-elevate" fill="#ffffff" transform="translate(74, 14)">
+    <!-- E -->
+    <path d="M0 0 H14 V3.5 H3.8 V10 H12.5 V13.5 H3.8 V21 H14.5 V24.5 H0 V0Z"/>
+    <!-- L -->
+    <path d="M22 0 H25.8 V21 H36 V24.5 H22 V0Z"/>
+    <!-- E -->
+    <path d="M43 0 H57 V3.5 H46.8 V10 H55.5 V13.5 H46.8 V21 H57.5 V24.5 H43 V0Z"/>
+    <!-- V -->
+    <path d="M63 0 H67.2 L74 18.5 L80.8 0 H85 L76.2 24.5 H71.8 L63 0Z"/>
+    <!-- A (with signature terracotta architectural apex) -->
+    <path d="M96.5 0 H101.5 L111 24.5 H106.8 L104.5 18.5 H93.5 L91.2 24.5 H87 L96.5 0ZM99 5.5 L94.8 15.2 H103.2 L99 5.5Z" fill="#c4683a"/>
+    <!-- T -->
+    <path d="M117 0 H132 V3.5 H126.5 V24.5 H122.5 V3.5 H117 V0Z"/>
+    <!-- E -->
+    <path d="M138 0 H152 V3.5 H141.8 V10 H150.5 V13.5 H141.8 V21 H152.5 V24.5 H138 V0Z"/>
+  </g>
+
+  <!-- Subtitle: BUILD TECH -->
+  <text x="75" y="52" fill="#a1a1aa" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="9" font-weight="600" letter-spacing="0.38em">BUILD TECH</text>
+  
+  <!-- Subtle architectural accent line under BUILD TECH -->
+  <line x1="75" y1="56" x2="225" y2="56" stroke="#c4683a" stroke-width="1" stroke-opacity="0.4"/>
+</svg>
