@@ -71,12 +71,12 @@ export default function CostEstimator() {
         "Sagar Municipal (CMC) & Panchayat Approvals Support",
       ],
       architectureHighlights: [
-        "2D Dimensioned Layouts",
-        "Color-Rendered Furniture Plan",
-        "Standard 3D Daylight View",
-        "Foundation, Column & Beam Sheets",
-        "Conduit & Switchboard Layout",
-        "Supply & Drainage Routing",
+        "Floor Plans",
+        "Rendered Floor Plan",
+        "Standard 3D Exterior Rendering",
+        "Structure Drawings",
+        "Electrical Drawing",
+        "Plumbing Layout Drawing",
       ],
       specifications: {
         structure: "ACC / Ultratech 43/53 grade cement, Fe500 grade TMT steel, solid concrete block masonry, 10' ceiling height.",
@@ -168,12 +168,12 @@ export default function CostEstimator() {
   // Architecture-specific deliverable specifications for the modal
   const architectureModalSpecs = {
     standard: [
-      { title: "2D Dimensioned Layouts", desc: "Comprehensive architectural layouts with precise room dimensions, space zoning, circulation mapping, and furniture placement." },
-      { title: "Color-Rendered Furniture Plan", desc: "Presentation plan illustrating realistic textures, furniture arrangement, and spatial layout." },
-      { title: "Standard 3D Daylight View", desc: "Photorealistic exterior 3D daytime render displaying facade finishes, rooflines, and materials." },
-      { title: "Foundation, Column & Beam Sheets", desc: "Complete structural engineering sheets: foundation footings, columns, beam schedules, and slab reinforcement." },
-      { title: "Conduit & Switchboard Layout", desc: "Detailed electrical routing, switchboard elevations, light points, and power distribution diagrams." },
-      { title: "Supply & Drainage Routing", desc: "Water supply piping, drainage routes, soil waste lines, and external inspection chambers." },
+      { title: "Floor Plans", desc: "Comprehensive architectural layouts with precise room dimensions, space zoning, circulation mapping, and furniture placement." },
+      { title: "Rendered Floor Plan", desc: "Presentation plan illustrating realistic textures, furniture arrangement, and spatial layout." },
+      { title: "Standard 3D Exterior Rendering", desc: "Photorealistic exterior 3D daytime render displaying facade finishes, rooflines, and materials." },
+      { title: "Structure Drawings", desc: "Complete structural engineering sheets: foundation footings, columns, beam schedules, and slab reinforcement." },
+      { title: "Electrical Drawing", desc: "Detailed electrical routing, switchboard elevations, light points, and power distribution diagrams." },
+      { title: "Plumbing Layout Drawing", desc: "Water supply piping, drainage routes, soil waste lines, and external inspection chambers." },
     ],
     premium: [
       { title: "Floor Plans", desc: "Detailed 2D architectural master drawings, longitudinal/cross sections, and window/door schedules." },
