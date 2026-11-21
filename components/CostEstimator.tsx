@@ -143,12 +143,12 @@ export default function CostEstimator() {
         "Dedicated Principal Architect & Senior Site Lead",
       ],
       architectureHighlights: [
-        "Bespoke Courtyard & Spatial Geometry",
-        "Ultra-HD Photorealistic Finishes",
+        "Floor Plans",
+        "Rendered Floor Plan",
         "Premium 3D Elevation + Ultra-HD Elevation + Cinematic Walkthrough",
-        "Heavy-Duty Seismic RCC & Foundation Vetting",
-        "Smart Automation & Hybrid Solar Conduits",
-        "Pressure-Boosted Lines & Water Recycling",
+        "Structure Drawing",
+        "Electrical Drawing",
+        "Plumbing Layout Drawing",
       ],
       specifications: {
         structure: "High-grade RMC M25/M30 concrete, Tata Tiscon Fe550D earthquake-resistant TMT, 11' grand ceiling heights.",
@@ -184,12 +184,12 @@ export default function CostEstimator() {
       { title: "Dual-Piping & Greywater Slopes", desc: "Dual-supply plumbing lines (drinking + utility), optimized drainage slopes, and greywater diversion schematics." },
     ],
     luxury: [
-      { title: "Bespoke Courtyard & Spatial Geometry", desc: "Architecturally curated spatial planning, traditional/modern courtyard orientation, and custom volume studies." },
-      { title: "Ultra-HD Photorealistic Finishes", desc: "Ultra-high-definition presentation floor plans with bespoke materiality, landscape integration, and daylight studies." },
+      { title: "Floor Plans", desc: "Bespoke 2D architectural master drawings, courtyard orientation, volume studies, and high-end spatial geometry." },
+      { title: "Rendered Floor Plan", desc: "Ultra-luxury rendered presentation plans with custom material textures, landscaping integration, and daylight studies." },
       { title: "Premium 3D Elevation + Ultra-HD Elevation + Cinematic Walkthrough", desc: "4K/8K exterior perspective renderings, cinematic drone-style animation, and immersive walkthrough." },
-      { title: "Heavy-Duty Seismic RCC & Foundation Vetting", desc: "Precision structural design for undulating or slope terrains, heavy-duty RCC frameworks, and certified peer review." },
-      { title: "Smart Automation & Hybrid Solar Conduits", desc: "Integrated smart home automation raceways, solar hybrid inverter conduits, and surge protection distribution." },
-      { title: "Pressure-Boosted Lines & Water Recycling", desc: "Hydro-pneumatic pressurized piping layout, solar water heating loops, and water recycling schematics." },
+      { title: "Structure Drawing", desc: "Heavy-duty seismic-resistant RCC structural engineering, foundation design for terrain slopes, and certified peer review." },
+      { title: "Electrical Drawing", desc: "Integrated smart home automation raceways, solar hybrid inverter conduits, and surge protection distribution." },
+      { title: "Plumbing Layout Drawing", desc: "Luxury concealed plumbing schematics, solar water heating loops, and water recycling schematics." },
     ],
   };
 
