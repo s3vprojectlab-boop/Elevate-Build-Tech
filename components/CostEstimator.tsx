@@ -7,7 +7,7 @@ import { ArrowRight, Check, X, Shield, FileText, ChevronRight } from "lucide-rea
 export default function CostEstimator() {
   const [area, setArea] = useState<number>(2500);
   const [tier, setTier] = useState<"standard" | "premium" | "luxury">("premium");
-  const [scope, setScope] = useState<"turnkey" | "construction" | "architecture">("turnkey");
+  const [scope, setScope] = useState<"turnkey" | "construction" | "architecture">("architecture");
   const [specModalTier, setSpecModalTier] = useState<"standard" | "premium" | "luxury" | null>(null);
 
   // Rates in INR per sq.ft based on Sagar & Malnad construction benchmarks
@@ -71,12 +71,12 @@ export default function CostEstimator() {
         "Sagar Municipal (CMC) & Panchayat Approvals Support",
       ],
       architectureHighlights: [
-        "Floor Plans",
-        "Rendered Floor Plan",
-        "Standard 3D Exterior Rendering",
-        "Structure Drawings",
-        "Electrical Drawing",
-        "Plumbing Layout Drawing",
+        "Floor Plans: 2D Dimensioned Layouts",
+        "Rendered Plans: Color-Rendered Furniture Plan",
+        "3D Elevation: Standard 3D Daylight View",
+        "Structure Drawing: Foundation, Column & Beam Sheets",
+        "Electrical Drawing: Conduit & Switchboard Layout",
+        "Plumbing Drawing: Supply & Drainage Routing",
       ],
       specifications: {
         structure: "ACC / Ultratech 43/53 grade cement, Fe500 grade TMT steel, solid concrete block masonry, 10' ceiling height.",
@@ -107,12 +107,12 @@ export default function CostEstimator() {
         "Multi-Layer Foundation & Roof Waterproofing",
       ],
       architectureHighlights: [
-        "Floor Plans",
-        "Rendered Floor Plan",
-        "Premium 3D Elevation + 4K Walkthrough Video",
-        "Structure Drawings",
-        "Electrical Drawing",
-        "Plumbing Layout Drawing",
+        "Floor Plans: 2D Master Blueprints & Sections",
+        "Rendered Plans: HD Presentation Layouts",
+        "3D Elevation: Premium 3D Elevation + 4K Walkthrough Video",
+        "Structure Drawing: Seismic-Resistant RCC & BBS Schedules",
+        "Electrical Drawing: FRLS Conduit Schematics & EV Provision",
+        "Plumbing Drawing: Dual-Piping & Greywater Slopes",
       ],
       specifications: {
         structure: "Ultratech / Birla Super cement, Tata Tiscon / Jindal Fe550 steel, engineered RCC frame, 10'6\" ceiling.",
@@ -143,12 +143,12 @@ export default function CostEstimator() {
         "Dedicated Principal Architect & Senior Site Lead",
       ],
       architectureHighlights: [
-        "Floor Plans",
-        "Rendered Floor Plan",
-        "Premium 3D Elevation + Ultra-HD Elevation + Cinematic Walkthrough",
-        "Structure Drawing",
-        "Electrical Drawing",
-        "Plumbing Layout Drawing",
+        "Floor Plans: Bespoke Courtyard & Spatial Geometry",
+        "Rendered Plans: Ultra-HD Photorealistic Finishes",
+        "3D Elevation: Premium 3D Elevation + Ultra-HD Elevation + Cinematic Walkthrough",
+        "Structure Drawing: Heavy-Duty Seismic RCC & Foundation Vetting",
+        "Electrical Drawing: Smart Automation & Hybrid Solar Conduits",
+        "Plumbing Drawing: Pressure-Boosted Lines & Water Recycling",
       ],
       specifications: {
         structure: "High-grade RMC M25/M30 concrete, Tata Tiscon Fe550D earthquake-resistant TMT, 11' grand ceiling heights.",
@@ -168,28 +168,28 @@ export default function CostEstimator() {
   // Architecture-specific deliverable specifications for the modal
   const architectureModalSpecs = {
     standard: [
-      { title: "1. Floor Plans", desc: "Dimensioned 2D architectural layouts, room zoning, circulation mapping, and spatial planning." },
-      { title: "2. Rendered Floor Plan", desc: "Color-rendered presentation plans illustrating furniture layouts, textures, and finishes." },
-      { title: "3. Standard 3D Exterior Rendering", desc: "Photorealistic exterior 3D day-view render displaying materials, elevations, and roofline." },
-      { title: "4. Structure Drawings", desc: "Comprehensive structural engineering sheets: foundation footings, columns, beam schedules, and slab reinforcement." },
-      { title: "5. Electrical Drawing", desc: "Complete electrical conduit layouts, switchboard elevations, light points, and power distribution diagrams." },
-      { title: "6. Plumbing Layout Drawing", desc: "Water supply piping, drainage routes, soil waste lines, and rainwater harvesting schematic layouts." },
+      { title: "1. Floor Plans", desc: "2D Dimensioned Layouts — Comprehensive architectural layouts with precise room dimensions, space zoning, circulation mapping, and furniture placement." },
+      { title: "2. Rendered Plans", desc: "Color-Rendered Furniture Plan — Presentation plan illustrating realistic textures, furniture arrangement, and spatial layout." },
+      { title: "3. 3D Elevation", desc: "Standard 3D Daylight View — Photorealistic exterior 3D daytime render displaying facade finishes, rooflines, and materials." },
+      { title: "4. Structure Drawing", desc: "Foundation, Column & Beam Sheets — Complete structural engineering sheets: foundation footings, columns, beam schedules, and slab reinforcement." },
+      { title: "5. Electrical Drawing", desc: "Conduit & Switchboard Layout — Detailed electrical routing, switchboard elevations, light points, and power distribution diagrams." },
+      { title: "6. Plumbing Drawing", desc: "Supply & Drainage Routing — Water supply piping, drainage routes, soil waste lines, and external inspection chambers." },
     ],
     premium: [
-      { title: "1. Floor Plans", desc: "Detailed 2D architectural master drawings, longitudinal/cross sections, and window/door schedules." },
-      { title: "2. Rendered Floor Plan", desc: "High-definition rendered presentation layouts with material textures and spatial flow optimization." },
-      { title: "3. Premium 3D Elevation + 4K Walkthrough Video", desc: "Multi-angle photorealistic 4K exterior renderings plus 3D cinematic walkthrough video." },
-      { title: "4. Structure Drawings", desc: "Advanced seismic-resistant RCC structural design, foundation footings, and complete Bar Bending Schedules (BBS)." },
-      { title: "5. Electrical Drawing", desc: "Concealed electrical conduit schematics, power load distribution diagrams, lighting points, and EV charger provisions." },
-      { title: "6. Plumbing Layout Drawing", desc: "Dual-piping water distribution schematics, greywater drainage slopes, and rainwater routing." },
+      { title: "1. Floor Plans", desc: "2D Master Blueprints & Sections — Complete set of detailed architectural blueprints, longitudinal/cross sections, and window/door schedules." },
+      { title: "2. Rendered Plans", desc: "HD Presentation Layouts — High-definition rendered floor layouts with realistic textures, lighting details, and optimized spatial flow." },
+      { title: "3. 3D Elevation", desc: "Premium 3D Elevation + 4K Walkthrough Video — Multi-angle photorealistic 4K exterior elevations plus 3D cinematic walkthrough video." },
+      { title: "4. Structure Drawing", desc: "Seismic-Resistant RCC & BBS Schedules — Advanced structural design engineered for seismic resistance, complete Bar Bending Schedules (BBS), and reinforcement details." },
+      { title: "5. Electrical Drawing", desc: "FRLS Conduit Schematics & EV Provision — Flame-retardant conduit diagrams, balanced phase load calculation, and dedicated EV charging point provision." },
+      { title: "6. Plumbing Drawing", desc: "Dual-Piping & Greywater Slopes — Dual-supply plumbing lines (drinking + utility), optimized drainage slopes, and greywater diversion schematics." },
     ],
     luxury: [
-      { title: "1. Floor Plans", desc: "Bespoke 2D architectural master drawings, courtyard orientation, volume studies, and high-end spatial geometry." },
-      { title: "2. Rendered Floor Plan", desc: "Ultra-luxury rendered presentation plans with custom material textures, landscaping integration, and daylight studies." },
-      { title: "3. Premium 3D Elevation + Ultra-HD Elevation + Cinematic Walkthrough", desc: "Multi-angle photorealistic 4K/8K exterior renders, cinematic fly-through animation, and 360-degree virtual walkthrough." },
-      { title: "4. Structure Drawing", desc: "Heavy-duty seismic-resistant RCC structural engineering, foundation design for terrain slopes, and structural certification." },
-      { title: "5. Electrical Drawing", desc: "Complete smart automation conduits, Schneider touch switches, surge protection, and solar hybrid master layouts." },
-      { title: "6. Plumbing Layout Drawing", desc: "Luxury concealed plumbing schematics, solar water heating lines, water recycling, and landscape irrigation routing." },
+      { title: "1. Floor Plans", desc: "Bespoke Courtyard & Spatial Geometry — Architecturally curated spatial planning, traditional/modern courtyard orientation, and custom volume studies." },
+      { title: "2. Rendered Plans", desc: "Ultra-HD Photorealistic Finishes — Ultra-high-definition presentation floor plans with bespoke materiality, landscape integration, and daylight studies." },
+      { title: "3. 3D Elevation", desc: "Premium 3D Elevation + Ultra-HD Elevation + Cinematic Walkthrough — 4K/8K exterior perspective renderings, cinematic drone-style animation, and immersive walkthrough." },
+      { title: "4. Structure Drawing", desc: "Heavy-Duty Seismic RCC & Foundation Vetting — Precision structural design for undulating or slope terrains, heavy-duty RCC frameworks, and certified peer review." },
+      { title: "5. Electrical Drawing", desc: "Smart Automation & Hybrid Solar Conduits — Integrated smart home automation raceways, solar hybrid inverter conduits, and surge protection distribution." },
+      { title: "6. Plumbing Drawing", desc: "Pressure-Boosted Lines & Water Recycling — Hydro-pneumatic pressurized piping layout, solar water heating loops, and water recycling schematics." },
     ],
   };
 
@@ -312,12 +312,24 @@ export default function CostEstimator() {
                   {/* Deliverables Checklist Box */}
                   <div className="w-full bg-white/[0.02] border border-white/[0.06] rounded-md p-5 mb-6 flex-1 text-left">
                     <ul className="space-y-3 text-xs text-[#a1a1aa]">
-                      {(scope === "architecture" ? pkg.architectureHighlights : pkg.highlights).map((h, i) => (
-                        <li key={i} className="flex items-start gap-2.5">
-                          <Check size={14} className="text-[#c4683a] flex-shrink-0 mt-0.5" />
-                          <span className="leading-snug">{h}</span>
-                        </li>
-                      ))}
+                      {(scope === "architecture" ? pkg.architectureHighlights : pkg.highlights).map((h, i) => {
+                        const colonIdx = h.indexOf(": ");
+                        return (
+                          <li key={i} className="flex items-start gap-2.5">
+                            <Check size={14} className="text-[#c4683a] flex-shrink-0 mt-0.5" />
+                            <span className="leading-snug">
+                              {colonIdx !== -1 ? (
+                                <>
+                                  <strong className="text-white/95 font-medium">{h.slice(0, colonIdx)}:</strong>{" "}
+                                  <span className="text-[#d4d4d8]">{h.slice(colonIdx + 2)}</span>
+                                </>
+                              ) : (
+                                h
+                              )}
+                            </span>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
 
