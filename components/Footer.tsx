@@ -27,6 +27,10 @@ export default function Footer() {
               <br />
               engineering and construction.
             </p>
+
+            <p className="text-[10px] uppercase tracking-[0.22em] text-[#71717a]">
+              Founder · <span className="text-[#a1a1aa]">Samartha B P</span>
+            </p>
           </div>
 
           {/* Right Column: Navigation & Location */}

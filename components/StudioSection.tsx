@@ -43,9 +43,12 @@ export default function StudioSection() {
             </div>
 
             {/* Territorial Stamp & Divider */}
-            <div className="pt-8 border-t border-[#ded7c8]">
+            <div className="pt-8 border-t border-[#ded7c8] flex flex-wrap items-center justify-between gap-3">
               <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#c4683a]">
                 Rooted in Sagar · Building Across Malnad
+              </span>
+              <span className="text-[10px] tracking-[0.2em] uppercase text-[#78716c] font-medium">
+                Founder · Samartha B P
               </span>
             </div>
           </div>
