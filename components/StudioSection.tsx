@@ -48,7 +48,7 @@ export default function StudioSection() {
                 Rooted in Sagar · Building Across Malnad
               </span>
               <span className="text-[10px] tracking-[0.2em] uppercase text-[#78716c] font-medium">
-                Founder · Samartha B P
+                Founder & CEO · Samartha B P
               </span>
             </div>
           </div>
