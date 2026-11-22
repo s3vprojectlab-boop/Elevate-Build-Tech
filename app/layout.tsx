@@ -1,21 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Jost, Manrope } from "next/font/google";
 import { TAB_ICON_32, TAB_ICON_192 } from "@/components/tab-icon-data";
 import "./globals.css";
-
-const jost = Jost({
-  subsets: ["latin"],
-  variable: "--font-jost",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
 
 export const viewport: Viewport = {
   themeColor: "#0e0f12",
@@ -225,8 +210,14 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${manrope.variable} ${jost.variable}`}>
+    <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" type="image/png" sizes="32x32" href={TAB_ICON_32} />
         <link rel="icon" type="image/png" sizes="192x192" href={TAB_ICON_192} />
         <link rel="shortcut icon" href={TAB_ICON_32} />
