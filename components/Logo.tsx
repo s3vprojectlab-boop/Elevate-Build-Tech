@@ -9,7 +9,7 @@ interface LogoProps {
 export default function Logo({ className = "" }: LogoProps) {
   return (
     <a
-      href="#"
+      href="/"
       className={`inline-flex items-center group select-none transition-opacity duration-200 hover:opacity-90 ${className}`}
       aria-label="Elevate Build Tech Home"
     >

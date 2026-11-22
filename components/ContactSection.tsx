@@ -1,7 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import { MapPin, CheckCircle2, Mail } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { MapPin, CheckCircle2, Mail, AlertCircle, ChevronDown, Check } from "lucide-react";
+
+const FORMBOLD_ENDPOINT = "https://formbold.com/s/oYpEv";
+const FORMBOLD_API_KEY = "$2a$10$rE/U.gToquZ6qxMq/YJt..dE3a6oqOMC.33GsrzJ52fnQ5KK8l9bS";
+
+const SERVICE_OPTIONS = [
+  { value: "Architecture & Planning", label: "Architecture & Concept Planning" },
+  { value: "Civil Construction", label: "Civil Construction & Execution" },
+  { value: "Project Management (PMC)", label: "Project Management Consultancy (PMC)" },
+  { value: "Turnkey Design & Build", label: "Turnkey Design, Build & Delivery" },
+  { value: "Interior & Renovation", label: "Interior Architecture & Renovation" },
+];
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -14,20 +25,82 @@ export default function ContactSection() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selectedService = SERVICE_OPTIONS.find((s) => s.value === formData.service);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMessage(null);
+
+    if (!formData.service) {
+      setErrorMessage("Please select a service you are interested in.");
+      return;
+    }
+
     setLoading(true);
 
-    setTimeout(() => {
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    // Formbold API key / secret attached directly to submission payload
+    data.set("apikey", FORMBOLD_API_KEY);
+    data.set("api_key", FORMBOLD_API_KEY);
+    data.set("secret", FORMBOLD_API_KEY);
+    data.set("service", formData.service);
+
+    // Ensure both "about" and "message" are available for Formbold notification and webhooks
+    if (!data.has("about") && formData.about) {
+      data.append("about", formData.about);
+    }
+    if (!data.has("message") && formData.about) {
+      data.append("message", formData.about);
+    }
+
+    try {
+      const response = await fetch(FORMBOLD_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: data,
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const result = await response.json().catch(() => null);
+        setErrorMessage(
+          result?.message ||
+            "Unable to submit enquiry right now. Please try again or reach out to us directly."
+        );
+      }
+    } catch (err) {
+      setErrorMessage(
+        "A network error occurred. Please check your connection and try again."
+      );
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 600);
+    }
   };
 
   return (
     <section
       id="contact"
+      style={{ colorScheme: "light" }}
       className="relative py-24 md:py-32 bg-[#f4f0e8] text-[#1a1a1a] border-t border-[#ded7c8] bg-cream-grid-subtle"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -109,8 +182,11 @@ export default function ContactSection() {
                   in Sagar will review your details and connect with you shortly.
                 </p>
                 <button
+                  type="button"
                   onClick={() => {
                     setSubmitted(false);
+                    setErrorMessage(null);
+                    setIsDropdownOpen(false);
                     setFormData({
                       name: "",
                       phone: "",
@@ -119,13 +195,31 @@ export default function ContactSection() {
                       about: "",
                     });
                   }}
-                  className="mt-4 text-xs uppercase tracking-[0.2em] font-semibold text-[#c4683a] hover:underline"
+                  className="mt-4 text-xs uppercase tracking-[0.2em] font-semibold text-[#c4683a] hover:underline cursor-pointer"
                 >
                   Send another inquiry
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form
+                action={FORMBOLD_ENDPOINT}
+                method="POST"
+                onSubmit={handleSubmit}
+                className="space-y-8"
+              >
+                {/* Formbold API Key / Secret */}
+                <input type="hidden" name="apikey" value={FORMBOLD_API_KEY} />
+                <input type="hidden" name="api_key" value={FORMBOLD_API_KEY} />
+                <input type="hidden" name="secret" value={FORMBOLD_API_KEY} />
+
+                {/* Error Banner */}
+                {errorMessage && (
+                  <div className="p-4 bg-[#fcedea] border border-[#e8a598] text-[#9b2c1b] text-xs font-medium tracking-wide flex items-start gap-2.5">
+                    <AlertCircle size={16} className="text-[#c4683a] flex-shrink-0 mt-0.5" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
                 {/* Your Name */}
                 <div className="space-y-2">
                   <label
@@ -136,6 +230,7 @@ export default function ContactSection() {
                   </label>
                   <input
                     id="name"
+                    name="name"
                     type="text"
                     required
                     value={formData.name}
@@ -158,6 +253,7 @@ export default function ContactSection() {
                     </label>
                     <input
                       id="phone"
+                      name="phone"
                       type="tel"
                       required
                       value={formData.phone}
@@ -178,6 +274,7 @@ export default function ContactSection() {
                     </label>
                     <input
                       id="email"
+                      name="email"
                       type="email"
                       required
                       value={formData.email}
@@ -190,46 +287,75 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                {/* I'm Interested In */}
+                {/* I'm Interested In (Custom Architectural Dropdown) */}
                 <div className="space-y-2">
                   <label
-                    htmlFor="service"
+                    htmlFor="service-button"
                     className="block text-[11px] font-bold uppercase tracking-[0.2em] text-[#78716c]"
                   >
                     I'm Interested In
                   </label>
-                  <div className="relative">
-                    <select
-                      id="service"
-                      required
-                      value={formData.service}
-                      onChange={(e) =>
-                        setFormData({ ...formData, service: e.target.value })
-                      }
-                      className="w-full bg-transparent border-b border-[#cfc8b8] focus:border-[#c4683a] py-3 text-sm text-[#1a1a1a] outline-none transition-colors appearance-none cursor-pointer"
+                  <div ref={dropdownRef} className="relative">
+                    <button
+                      type="button"
+                      id="service-button"
+                      aria-haspopup="listbox"
+                      aria-expanded={isDropdownOpen}
+                      onClick={() => setIsDropdownOpen((prev) => !prev)}
+                      className="w-full bg-transparent border-b border-[#cfc8b8] focus:border-[#c4683a] py-3 text-sm text-left flex items-center justify-between outline-none transition-colors cursor-pointer"
                     >
-                      <option value="" disabled className="text-[#a8a29e]">
-                        Select a service
-                      </option>
-                      <option value="Architecture & Planning">
-                        Architecture & Concept Planning
-                      </option>
-                      <option value="Civil Construction">
-                        Civil Construction & Execution
-                      </option>
-                      <option value="Project Management (PMC)">
-                        Project Management Consultancy (PMC)
-                      </option>
-                      <option value="Turnkey Design & Build">
-                        Turnkey Design, Build & Delivery
-                      </option>
-                      <option value="Interior & Renovation">
-                        Interior Architecture & Renovation
-                      </option>
-                    </select>
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-[#78716c]">
-                      ▾
-                    </div>
+                      <span className={formData.service ? "text-[#1a1a1a]" : "text-[#a8a29e]"}>
+                        {selectedService ? selectedService.label : "Select a service"}
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        className={`text-[#78716c] transition-transform duration-200 flex-shrink-0 ml-2 ${
+                          isDropdownOpen ? "rotate-180 text-[#c4683a]" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {/* Hidden input for Formbold form serialization */}
+                    <input
+                      type="hidden"
+                      name="service"
+                      value={formData.service}
+                    />
+
+                    {/* Custom Dropdown Menu */}
+                    {isDropdownOpen && (
+                      <ul
+                        role="listbox"
+                        aria-labelledby="service-button"
+                        className="absolute z-30 left-0 right-0 mt-1 bg-[#fbf9f5] border border-[#ded7c8] shadow-xl py-1 max-h-64 overflow-y-auto outline-none animate-in fade-in-50 duration-150"
+                      >
+                        {SERVICE_OPTIONS.map((opt) => {
+                          const isSelected = formData.service === opt.value;
+                          return (
+                            <li
+                              key={opt.value}
+                              role="option"
+                              aria-selected={isSelected}
+                              onClick={() => {
+                                setFormData({ ...formData, service: opt.value });
+                                setIsDropdownOpen(false);
+                                setErrorMessage(null);
+                              }}
+                              className={`px-4 py-3 text-sm flex items-center justify-between cursor-pointer transition-colors duration-150 ${
+                                isSelected
+                                  ? "bg-[#f4efe4] text-[#c4683a] font-medium"
+                                  : "text-[#1a1a1a] hover:bg-[#f4efe4] hover:text-[#c4683a]"
+                              }`}
+                            >
+                              <span>{opt.label}</span>
+                              {isSelected && (
+                                <Check size={14} className="text-[#c4683a] flex-shrink-0 ml-2" />
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
                   </div>
                 </div>
 
@@ -243,6 +369,7 @@ export default function ContactSection() {
                   </label>
                   <textarea
                     id="about"
+                    name="message"
                     rows={3}
                     required
                     value={formData.about}
@@ -259,7 +386,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 bg-[#c4683a] hover:bg-[#b55b2f] text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg disabled:opacity-70 active:scale-[0.99]"
+                    className="w-full py-4 bg-[#c4683a] hover:bg-[#b55b2f] text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed active:scale-[0.99] cursor-pointer"
                   >
                     <span>{loading ? "Sending..." : "Send Enquiry"}</span>
                     <span className="text-sm">↗</span>

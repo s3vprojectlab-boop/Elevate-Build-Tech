@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 xl:px-12 flex items-center justify-between gap-6">
         {/* Logo */}
         <a
-          href="#"
+          href="/"
           aria-label="Elevate Build Tech Home"
           className="inline-flex items-center flex-shrink-0 group select-none transition-opacity duration-200 hover:opacity-90 py-1"
         >

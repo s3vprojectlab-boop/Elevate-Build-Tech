@@ -277,7 +277,7 @@ export default function CostEstimator() {
                 <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
                   <Image
                     src={pkg.image}
-                    alt={pkg.name}
+                    alt={`${pkg.name} - ${pkg.subtitle} Construction Package in Sagar Karnataka`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -287,9 +287,9 @@ export default function CostEstimator() {
 
                 {/* Card Body */}
                 <div className="flex-1 flex flex-col items-center px-6 sm:px-8 py-6 text-center">
-                  <h4 className="font-display text-2xl text-[#c4683a] mb-2 font-medium tracking-tight">
+                  <h3 className="font-display text-2xl text-[#c4683a] mb-2 font-medium tracking-tight">
                     {pkg.subtitle}
-                  </h4>
+                  </h3>
 
                   {/* Rate Display */}
                   <div className="mb-4">

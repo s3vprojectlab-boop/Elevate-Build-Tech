@@ -86,7 +86,7 @@ export default function FloatingWhatsApp() {
             Direct Enquiry
           </span>
           <span className="text-xs font-semibold text-white tracking-wide mt-0.5">
-            WhatsApp Studio
+            WhatsApp
           </span>
         </div>
       </a>
